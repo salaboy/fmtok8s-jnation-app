@@ -1,0 +1,126 @@
+
+Showing logs for build [32msalaboy-fmtok8s-jnation-app-mas-wd55v-1[0m stage [32mfrom-build-pack[0m and container [32mstep-credential-initializer-lbfh2[0m
+{"level":"info","ts":1591039296.727267,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: open /var/run/ko/refs/heads/0.8.0-ns-support: no such file or directory"}
+{"level":"info","ts":1591039296.7287545,"logger":"fallback-logger","caller":"creds-init/main.go:40","msg":"Credentials initialized."}
+
+Showing logs for build [32msalaboy-fmtok8s-jnation-app-mas-wd55v-1[0m stage [32mfrom-build-pack[0m and container [32mstep-working-dir-initializer-lj4zv[0m
+{"level":"info","ts":1591039297.7757392,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: open /var/run/ko/HEAD: no such file or directory"}
+{"level":"info","ts":1591039297.7799273,"logger":"fallback-logger","caller":"bash/main.go:64","msg":"Successfully executed command \"sh -c mkdir -p /workspace/source\"; output "}
+
+Showing logs for build [32msalaboy-fmtok8s-jnation-app-mas-wd55v-1[0m stage [32mfrom-build-pack[0m and container [32mstep-place-tools[0m
+
+Showing logs for build [32msalaboy-fmtok8s-jnation-app-mas-wd55v-1[0m stage [32mfrom-build-pack[0m and container [32mstep-git-source-salaboy-fmtok8s-jnation-app-mas-wd55v-bks4k[0m
+{"level":"info","ts":1591039304.0894587,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: open /var/run/ko/refs/heads/0.8.0-ns-support: no such file or directory"}
+{"level":"info","ts":1591039305.1311586,"logger":"fallback-logger","caller":"git/git.go:103","msg":"Successfully cloned https://github.com/*******/fmtok8s-jnation-app.git @ v0.0.1 in path /workspace/source"}
+
+Showing logs for build [32msalaboy-fmtok8s-jnation-app-mas-wd55v-1[0m stage [32mfrom-build-pack[0m and container [32mstep-git-merge[0m
+Using SHAs from PULL_REFS=master:
+WARNING: no SHAs to merge, falling back to initial cloned commit
+
+Showing logs for build [32msalaboy-fmtok8s-jnation-app-mas-wd55v-1[0m stage [32mfrom-build-pack[0m and container [32mstep-setup-jx-git-credentials[0m
+Generated Git credentials file /builder/home/git/credentials
+
+Showing logs for build [32msalaboy-fmtok8s-jnation-app-mas-wd55v-1[0m stage [32mfrom-build-pack[0m and container [32mstep-build-basic-auth-username[0m
+Command "credential" is deprecated, it will be removed on Jun 1 2020.  This is replaced by Tekton's mounted secrets
+/builder/home/basic-auth-user.json
+
+Showing logs for build [32msalaboy-fmtok8s-jnation-app-mas-wd55v-1[0m stage [32mfrom-build-pack[0m and container [32mstep-build-basic-auth-password[0m
+Command "credential" is deprecated, it will be removed on Jun 1 2020.  This is replaced by Tekton's mounted secrets
+/builder/home/basic-auth-pass.json
+
+Showing logs for build [32msalaboy-fmtok8s-jnation-app-mas-wd55v-1[0m stage [32mfrom-build-pack[0m and container [32mstep-build-release[0m
+rm -rf jnation-app/charts
+rm -rf jnation-app/jnation-app*.tgz
+rm -rf jnation-app/requirements.lock
+helm init --client-only
+Creating /builder/home/.helm 
+Creating /builder/home/.helm/repository 
+Creating /builder/home/.helm/repository/cache 
+Creating /builder/home/.helm/repository/local 
+Creating /builder/home/.helm/plugins 
+Creating /builder/home/.helm/starters 
+Creating /builder/home/.helm/cache/archive 
+Creating /builder/home/.helm/repository/repositories.yaml 
+Adding stable repo with URL: https://kubernetes-charts.storage.googleapis.com 
+Adding local repo with URL: http://127.0.0.1:8879/charts 
+$HELM_HOME has been configured at /builder/home/.helm.
+Not installing Tiller due to 'client-only' flag having been set
+Happy Helming!
+helm repo add jenkins-x http://chartmuseum.jenkins-x.io
+"jenkins-x" has been added to your repositories
+helm repo add zeebe http://helm.zeebe.io
+"zeebe" has been added to your repositories
+helm repo add releases http://jenkins-x-chartmuseum:8080
+"releases" has been added to your repositories
+helm dependency build jnation-app
+Hang tight while we grab the latest from your chart repositories...
+...Unable to get an update from the "local" chart repository (http://127.0.0.1:8879/charts):
+	Get http://127.0.0.1:8879/charts/index.yaml: dial tcp 127.0.0.1:8879: connect: connection refused
+...Successfully got an update from the "releases" chart repository
+...Successfully got an update from the "zeebe" chart repository
+...Successfully got an update from the "stable" chart repository
+...Successfully got an update from the "jenkins-x" chart repository
+Update Complete. ⎈Happy Helming!⎈
+Saving 4 charts
+Downloading fmtok8s-agenda from repo http://jenkins-x-chartmuseum:8080
+Downloading fmtok8s-c4p from repo http://jenkins-x-chartmuseum:8080
+Downloading fmtok8s-api-gateway from repo http://jenkins-x-chartmuseum:8080
+Downloading fmtok8s-email from repo http://jenkins-x-chartmuseum:8080
+Deleting outdated charts
+helm lint jnation-app
+==> Linting jnation-app
+Lint OK
+
+1 chart(s) linted, no failures
+sed -i -e "s/version:.*/version: 0.0.1/" jnation-app/Chart.yaml
+helm package jnation-app
+Successfully packaged chart and saved it to: /workspace/source/jnation-app-0.0.1.tgz
+curl --fail -u *****:********** --data-binary "@jnation-app-0.0.1.tgz" http://jenkins-x-chartmuseum:8080/api/charts
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100  6901  100    14  100  6887    222   106k --:--:-- --:--:-- --:--:--  108k
+{"saved":true}rm -rf jnation-app*.tgz
+** step changelog  --verbose --version 0.0.1 --rev 
+Error: flag needs an argument: --rev
+
+
+Aliases:
+changelog, changes
+Examples:
+  # generate a changelog on the current source
+  ** step changelog
+  
+  # specify the version to use
+  ** step changelog --version 1.2.3
+  
+  # specify the version and a header template
+  ** step changelog --header-file docs/dev/changelog-header.md --version 1.2.3
+Options:
+      --build='': The Build number which is used to update the PipelineActivity. If not specified its defaulted from  the '$BUILD_NUMBER' environment variable
+  -c, --crd=false: Generate the CRD in the chart
+      --crd-yaml-file='release-crd.yaml': the name of the file to generate the Release CustomResourceDefinition YAML
+      --dir='': The directory of the Git repository. Defaults to the current working directory
+      --fail-if-no-commits=false: Do we want to fail the build if we don't find any commits to generate the changelog
+      --footer='': The changelog footer in markdown for the changelog. Can use go template expressions on the ReleaseSpec object: https://golang.org/pkg/text/template/
+      --footer-file='': The file name of the changelog footer in markdown for the changelog. Can use go template expressions on the ReleaseSpec object: https://golang.org/pkg/text/template/
+  -y, --generate-yaml=true: Generate the Release YAML in the local helm chart
+      --header='': The changelog header in markdown for the changelog. Can use go template expressions on the ReleaseSpec object: https://golang.org/pkg/text/template/
+      --header-file='': The file name of the changelog header in markdown for the changelog. Can use go template expressions on the ReleaseSpec object: https://golang.org/pkg/text/template/
+      --include-merge-commits=false: Include merge commits when generating the changelog
+      --no-dev-release=false: Disables the generation of Release CRDs in the development namespace to track releases being performed
+      --output-markdown='': The file to generate for the changelog output if not updating a Git provider release
+  -o, --overwrite=false: overwrites the Release CRD YAML file if it exists
+      --previous-date='': the previous date to find a revision in format 'MonthName dayNumber year'
+  -p, --previous-rev='': the previous tag revision
+      --release-yaml-file='release.yaml': the name of the file to generate the Release YAML
+  -r, --rev='': the current tag revision
+  -t, --templates-dir='': the directory containing the helm chart templates to generate the resources
+      --update-release=true: Should we update the release on the Git repository with the changelog
+  -v, --version='': The version to release
+Usage:
+  ** step changelog [flags] [options]
+Use "** options" for a list of global command-line options (applies to all commands).
+
+make: *** [release] Error 1
+[31m
+Pipeline failed on stage 'from-build-pack' : container 'step-build-release'. The execution of the pipeline has stopped.[0m
