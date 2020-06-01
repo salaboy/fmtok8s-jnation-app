@@ -4,7 +4,7 @@ dependencies:
   version: 0.0.31
 - name: fmtok8s-c4p
   repository: http://jenkins-x-chartmuseum:8080
-  version: 0.0.40
+  version: 0.0.41
 - name: fmtok8s-api-gateway
   repository: http://jenkins-x-chartmuseum:8080
   version: 0.0.44
