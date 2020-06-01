@@ -1,0 +1,19 @@
+dependencies:
+- host: github.com
+  owner: salaboy
+  repo: fmtok8s-email
+  url: https://github.com/salaboy/fmtok8s-email
+  version: 0.0.8
+  versionURL: https://github.com/salaboy/fmtok8s-email/releases/tag/v0.0.8
+- host: github.com
+  owner: salaboy
+  repo: fmtok8s-c4p
+  url: https://github.com/salaboy/fmtok8s-c4p
+  version: 0.0.25
+  versionURL: https://github.com/salaboy/fmtok8s-c4p/releases/tag/v0.0.25
+- host: github.com
+  owner: salaboy
+  repo: fmtok8s-agenda
+  url: https://github.com/salaboy/fmtok8s-agenda
+  version: 0.0.12
+  versionURL: https://github.com/salaboy/fmtok8s-agenda/releases/tag/v0.0.12
