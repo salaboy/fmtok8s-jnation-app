@@ -1,0 +1,136 @@
+
+Showing logs for build [32msalaboy-fmtok8s-jnation-app-mas-gd8q2-5[0m stage [32mfrom-build-pack[0m and container [32mstep-credential-initializer-77rx9[0m
+{"level":"info","ts":1591089932.6643345,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: open /var/run/ko/refs/heads/0.8.0-ns-support: no such file or directory"}
+{"level":"info","ts":1591089932.6665854,"logger":"fallback-logger","caller":"creds-init/main.go:40","msg":"Credentials initialized."}
+
+Showing logs for build [32msalaboy-fmtok8s-jnation-app-mas-gd8q2-5[0m stage [32mfrom-build-pack[0m and container [32mstep-working-dir-initializer-m84tf[0m
+{"level":"info","ts":1591089933.7135487,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: open /var/run/ko/HEAD: no such file or directory"}
+{"level":"info","ts":1591089933.7174652,"logger":"fallback-logger","caller":"bash/main.go:64","msg":"Successfully executed command \"sh -c mkdir -p /workspace/source\"; output "}
+
+Showing logs for build [32msalaboy-fmtok8s-jnation-app-mas-gd8q2-5[0m stage [32mfrom-build-pack[0m and container [32mstep-place-tools[0m
+
+Showing logs for build [32msalaboy-fmtok8s-jnation-app-mas-gd8q2-5[0m stage [32mfrom-build-pack[0m and container [32mstep-git-source-salaboy-fmtok8s-jnation-app-mas-gd8q2-2mh7h[0m
+{"level":"info","ts":1591089939.806865,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: open /var/run/ko/refs/heads/0.8.0-ns-support: no such file or directory"}
+{"level":"info","ts":1591089940.9163463,"logger":"fallback-logger","caller":"git/git.go:103","msg":"Successfully cloned https://github.com/*******/fmtok8s-jnation-app.git @ v0.0.5 in path /workspace/source"}
+
+Showing logs for build [32msalaboy-fmtok8s-jnation-app-mas-gd8q2-5[0m stage [32mfrom-build-pack[0m and container [32mstep-git-merge[0m
+Using SHAs from PULL_REFS=master:2bf95ee25bb0b49cc660c636b034dd25b79baa79
+WARNING: no SHAs to merge, falling back to initial cloned commit
+
+Showing logs for build [32msalaboy-fmtok8s-jnation-app-mas-gd8q2-5[0m stage [32mfrom-build-pack[0m and container [32mstep-setup-jx-git-credentials[0m
+Generated Git credentials file /builder/home/git/credentials
+
+Showing logs for build [32msalaboy-fmtok8s-jnation-app-mas-gd8q2-5[0m stage [32mfrom-build-pack[0m and container [32mstep-build-basic-auth-username[0m
+Command "credential" is deprecated, it will be removed on Jun 1 2020.  This is replaced by Tekton's mounted secrets
+/builder/home/basic-auth-user.json
+
+Showing logs for build [32msalaboy-fmtok8s-jnation-app-mas-gd8q2-5[0m stage [32mfrom-build-pack[0m and container [32mstep-build-basic-auth-password[0m
+Command "credential" is deprecated, it will be removed on Jun 1 2020.  This is replaced by Tekton's mounted secrets
+/builder/home/basic-auth-pass.json
+
+Showing logs for build [32msalaboy-fmtok8s-jnation-app-mas-gd8q2-5[0m stage [32mfrom-build-pack[0m and container [32mstep-build-release[0m
+rm -rf jnation-app/charts
+rm -rf jnation-app/jnation-app*.tgz
+rm -rf jnation-app/requirements.lock
+helm init --client-only
+Creating /builder/home/.helm 
+Creating /builder/home/.helm/repository 
+Creating /builder/home/.helm/repository/cache 
+Creating /builder/home/.helm/repository/local 
+Creating /builder/home/.helm/plugins 
+Creating /builder/home/.helm/starters 
+Creating /builder/home/.helm/cache/archive 
+Creating /builder/home/.helm/repository/repositories.yaml 
+Adding stable repo with URL: https://kubernetes-charts.storage.googleapis.com 
+Adding local repo with URL: http://127.0.0.1:8879/charts 
+$HELM_HOME has been configured at /builder/home/.helm.
+Not installing Tiller due to 'client-only' flag having been set
+Happy Helming!
+helm repo add jenkins-x http://chartmuseum.jenkins-x.io
+"jenkins-x" has been added to your repositories
+helm repo add zeebe http://helm.zeebe.io
+"zeebe" has been added to your repositories
+helm repo add releases http://jenkins-x-chartmuseum:8080
+"releases" has been added to your repositories
+helm dependency build jnation-app
+Hang tight while we grab the latest from your chart repositories...
+...Unable to get an update from the "local" chart repository (http://127.0.0.1:8879/charts):
+	Get http://127.0.0.1:8879/charts/index.yaml: dial tcp 127.0.0.1:8879: connect: connection refused
+...Successfully got an update from the "releases" chart repository
+...Successfully got an update from the "zeebe" chart repository
+...Successfully got an update from the "stable" chart repository
+...Successfully got an update from the "jenkins-x" chart repository
+Update Complete. ⎈Happy Helming!⎈
+Saving 4 charts
+Downloading fmtok8s-agenda from repo http://jenkins-x-chartmuseum:8080
+Downloading fmtok8s-c4p from repo http://jenkins-x-chartmuseum:8080
+Downloading fmtok8s-api-gateway from repo http://jenkins-x-chartmuseum:8080
+Downloading fmtok8s-email from repo http://jenkins-x-chartmuseum:8080
+Deleting outdated charts
+helm lint jnation-app
+==> Linting jnation-app
+Lint OK
+
+1 chart(s) linted, no failures
+sed -i -e "s/version:.*/version: 0.0.5/" jnation-app/Chart.yaml
+helm package jnation-app
+Successfully packaged chart and saved it to: /workspace/source/jnation-app-0.0.5.tgz
+curl --fail -u *****:********** --data-binary "@jnation-app-0.0.5.tgz" http://jenkins-x-chartmuseum:8080/api/charts
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100  6881  100    14  100  6867   1909   914k --:--:-- --:--:-- --:--:--  958k
+{"saved":true}rm -rf jnation-app*.tgz
+** step changelog  --verbose --version 0.0.5 --rev 2bf95ee25bb0b49cc660c636b034dd25b79baa79
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git rev-parse --is-shallow-repository
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git fetch --unshallow
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git fetch --tags
+Converted /workspace/source to an unshallow repository
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git for-each-ref --sort=-creatordate --format=%(objectname)%00%(refname:short) --count=2 refs/tags
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git rev-list -n 1 9fbb3f37b2126f2424260b519041029e5ab6e7bc
+DEBUG: Using helmBinary helm with feature flag: template-mode
+Generating change log from git ref 0459dfcd2a40f3987e167a860b1734939959352f => 2bf95ee25bb0b49cc660c636b034dd25b79baa79
+DEBUG: Found commits:
+DEBUG:   commit 2bf95ee25bb0b49cc660c636b034dd25b79baa79
+DEBUG:   Author: ******* <Salaboy@gmail.com>
+DEBUG:   Date: Tue Jun  2 10:24:59 2020
+DEBUG:       Merge pull request #4 from *******/bump-chart-version-99c9541c-a4b2-11ea-b5dd-5aa4d19ac6ca
+
+chore(deps): bump https://github.com/*******/fmtok8s-email from 0.0.17 to 0.0.18
+
+
+DEBUG:   commit 070b0e0ff0d664f8f8e9692f4656c88742290490
+DEBUG:   Author: jenkins-x-bot <jenkins-x@googlegroups.com>
+DEBUG:   Date: Tue Jun  2 09:22:37 2020
+DEBUG:       chore(deps): bump https://github.com/*******/fmtok8s-email from 0.0.17 to 0.0.18
+
+Command run was `** step create pr chart --name fmtok8s-email --version 0.0.18 --repo https://github.com/*******/fmtok8s-jnation-app.git`
+
+
+
+WARNING: Failed to enrich commit 070b0e0ff0d664f8f8e9692f4656c88742290490 with issues: users.jenkins.io "x-0" already exists
+WARNING: Failed to enrich commit 070b0e0ff0d664f8f8e9692f4656c88742290490 with issues: users.jenkins.io "x-0" already exists
+Finding issues in commit messages using git format
+DEBUG: Generated release notes:
+
+## Changes
+
+### Chores
+
+* deps: bump https://github.com/*******/fmtok8s-email from 0.0.17 to 0.0.18
+
+### Dependency Updates
+
+| Dependency | Component | New Version | Old Version |
+| ---------- | --------- | ----------- | ----------- |
+| [*******/fmtok8s-email](https://github.com/*******/fmtok8s-email) |  | [0.0.18](https://github.com/*******/fmtok8s-email/releases/tag/v0.0.18) | [0.0.17](https://github.com/*******/fmtok8s-email/releases/tag/v0.0.17)|
+
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git tag --list 0.0.5
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git tag --list v0.0.5
+WARNING: No release found for *******/fmtok8s-jnation-app and tag v0.0.5 so creating a new release
+Updated the release information at https://github.com/*******/fmtok8s-jnation-app/releases/tag/v0.0.5
+Uploaded /workspace/source/dependency-matrix/matrix.yaml to release asset https://github.com/*******/fmtok8s-jnation-app/releases/download/v0.0.5/dependency-matrix.yaml
+Uploaded dependency-updates.yaml to release asset https://github.com/*******/fmtok8s-jnation-app/releases/download/v0.0.5/dependency-updates.yaml
+generated: /workspace/source/jnation-app/templates/release.yaml
+Created Release fmtok8s-jnation-app-0-0-5 resource in namespace **
+Updating PipelineActivity *******-fmtok8s-jnation-app-master-5 with version 0.0.5
+Updated PipelineActivities *******-fmtok8s-jnation-app-master-5 with release notes URL: https://github.com/*******/fmtok8s-jnation-app/releases/tag/v0.0.5
