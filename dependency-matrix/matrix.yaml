@@ -9,8 +9,8 @@ dependencies:
   owner: salaboy
   repo: fmtok8s-c4p
   url: https://github.com/salaboy/fmtok8s-c4p
-  version: 0.0.43
-  versionURL: https://github.com/salaboy/fmtok8s-c4p/releases/tag/v0.0.43
+  version: 0.0.44
+  versionURL: https://github.com/salaboy/fmtok8s-c4p/releases/tag/v0.0.44
 - host: github.com
   owner: salaboy
   repo: fmtok8s-agenda
